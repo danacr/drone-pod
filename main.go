@@ -3,6 +3,8 @@ package main
 import (
 	"fmt"
 	"os"
+	"os/signal"
+	"syscall"
 
 	"gobot.io/x/gobot"
 	"gobot.io/x/gobot/platforms/dji/tello"
@@ -13,6 +15,17 @@ func main() {
 	droneip := getDroneIP()
 
 	drone := tello.NewDriver(droneip, "8888")
+
+	// capture sigterm and land drone
+	c := make(chan os.Signal, 1)
+	signal.Notify(c, syscall.SIGTERM)
+	go func() {
+		for sig := range c {
+			fmt.Println("Need to die, but I must land the drone first", sig)
+			drone.Land()
+			os.Exit(0)
+		}
+	}()
 
 	work := func() {
 
@@ -31,6 +44,7 @@ func main() {
 	)
 
 	robot.Start()
+
 }
 
 func getDroneIP() string {
