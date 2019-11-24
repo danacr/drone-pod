@@ -22,7 +22,7 @@ steps:
       password:
         from_secret: docker_password
       target: danacr/drone-pod:latest
-      template: foo/bar:arm64-latest
+      template: danacr/drone:arm64-latest
       platforms:
         - linux/arm64
 ---
@@ -49,6 +49,6 @@ steps:
       password:
         from_secret: docker_password
       target: danacr/drone-pod:latest
-      template: foo/bar:amd64-latest
+      template: danacr/drone:amd64-latest
       platforms:
         - linux/amd64
