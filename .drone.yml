@@ -37,6 +37,8 @@ steps:
 ---
 kind: pipeline
 name: manifests
+
+steps:
   - name: manifest
     image: plugins/manifest
     settings:
