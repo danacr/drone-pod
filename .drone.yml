@@ -1,0 +1,34 @@
+kind: pipeline
+type: docker
+name: arm
+
+platform:
+  arch: arm64
+
+steps:
+  - name: docker-arm64
+    platform:
+    image: plugins/docker
+    settings:
+      username: danacr
+      password:
+        from_secret: docker_password
+      repo: danacr/drone-pod
+      tags: arm64-latest
+---
+kind: pipeline
+type: docker
+name: amd64
+
+platform:
+  arch: amd64
+
+steps:
+  - name: docker-amd64
+    image: plugins/docker
+    settings:
+      username: danacr
+      password:
+        from_secret: docker_password
+      repo: danacr/drone-pod
+      tags: amd64-latest

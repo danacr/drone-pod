@@ -1,3 +1,3 @@
-# drone-pod
+# drone-pod 🛸
 
-Turning kubernetes nodes into drones 🛸
+Turning kubernetes nodes into drones...
