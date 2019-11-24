@@ -14,7 +14,7 @@ steps:
       password:
         from_secret: docker_password
       repo: danacr/drone-pod
-      tags: latest-OS-ARCH
+      tags: latest-linux-arm64
 
 ---
 kind: pipeline
@@ -32,7 +32,7 @@ steps:
       password:
         from_secret: docker_password
       repo: danacr/drone-pod
-      tags: latest-OS-ARCH
+      tags: latest-linux-amd64
 
 ---
 kind: pipeline
