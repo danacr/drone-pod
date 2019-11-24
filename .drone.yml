@@ -1,6 +1,6 @@
 kind: pipeline
 type: docker
-name: arm
+name: arm64
 
 platform:
   arch: arm64
@@ -15,6 +15,16 @@ steps:
         from_secret: docker_password
       repo: danacr/drone-pod
       tags: arm64-latest
+  - name: manifest
+    image: plugins/manifest
+    settings:
+      username: danacr
+      password:
+        from_secret: docker_password
+      target: danacr/drone-pod:latest
+      template: foo/bar:arm64-latest
+      platforms:
+        - linux/arm64
 ---
 kind: pipeline
 type: docker
@@ -32,3 +42,13 @@ steps:
         from_secret: docker_password
       repo: danacr/drone-pod
       tags: amd64-latest
+  - name: manifest
+    image: plugins/manifest
+    settings:
+      username: danacr
+      password:
+        from_secret: docker_password
+      target: danacr/drone-pod:latest
+      template: foo/bar:amd64-latest
+      platforms:
+        - linux/amd64
