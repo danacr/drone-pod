@@ -50,11 +50,11 @@ func main() {
 func getDroneIP() string {
 	var droneip string
 	switch node := os.Getenv("NODE"); node {
-	case "rockpi0":
+	case "pine00":
 		droneip = "192.168.86.250"
-	case "rockpi1":
+	case "pine01":
 		droneip = "192.168.86.251"
-	case "rockpi2":
+	case "pine02":
 		droneip = "192.168.86.252"
 	}
 	return droneip
